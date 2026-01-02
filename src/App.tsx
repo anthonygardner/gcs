@@ -2,8 +2,7 @@ import { useIMU } from './imu/useIMU';
 import { IMUDataDisplay } from './imu/IMUData';
 import { IMUViewer } from './imu/IMUViewer';
 
-// TODO(acg): Environment variable
-const WS_URL = '';
+const WS_URL = import.meta.env.VITE_WS_URL;
 
 function App() {
   const { data, connected } = useIMU(WS_URL);
