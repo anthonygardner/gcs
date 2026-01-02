@@ -15,7 +15,15 @@ export function useWebSocket<T>(url: string) {
             ws.current = null;
         };
         ws.current.onmessage = (event) => {
-            setData(JSON.parse(event.data));
+            const tsClient = performance.now();
+            const parsed = JSON.parse(event.data);
+            console.log({
+                stm32: parsed.ts_stm32,
+                gateway: parsed.ts_gw,
+                client: tsClient
+            });
+
+            setData(parsed);
         };
 
         return () => {
